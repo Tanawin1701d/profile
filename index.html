@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanawin Devaveja</title>
+<meta name="description" content="Tanawin Devaveja: computer architecture, FPGA systems, and hardware modeling. Kathryn, Kride, DFX4ML, Carolyne, hls4ml.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9635;</text></svg>">
+</head>
+<body>
+
+<header class="masthead">
+  <img class="photo" src="assets/photo.jpg" alt="Tanawin Devaveja">
+  <div class="ident">
+    <h1>Tanawin Devaveja</h1>
+    <p class="tagline">Computer architecture &middot; FPGA systems &middot; hardware modeling and simulation</p>
+    <p class="affil">M.S. in Computer Science, Chulalongkorn University. Applying for PhD positions.</p>
+    <p class="contact">
+      <a href="mailto:tanawin1701d@outlook.com">tanawin1701d@outlook.com</a> &middot;
+      <a href="mailto:6670107821@student.chula.ac.th">6670107821@student.chula.ac.th</a><br>
+      <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a> &middot;
+      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a> &middot;
+      <a href="assets/cv.pdf">CV (PDF)</a><br>
+      Pathum Thani, Thailand
+    </p>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#research">Profile</a>
+  <a href="#looking">What I am looking for</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#publications">Publications &amp; talks</a>
+</nav>
+
+<main>
+
+<section id="research">
+  <h2>Profile</h2>
+  <p>
+    I am an independent researcher working in computer architecture, FPGA design, and hardware generation.
+  </p>
+  <p>
+    In my third undergraduate year, I studied computer architecture on my own, from online material. I then tried to
+    write an out-of-order superscalar RISC-V CPU. I had no supervisor. The work was much harder than I expected, and I
+    did not finish it. That attempt decided the direction of everything I have done since. As a master's student, I
+    first built the tool I had been missing: <a href="#kathryn">Kathryn</a>, a framework that hides most of the
+    low-level design work. Chisel was the inspiration. I then used Kathryn to build <a href="#kride">Kride</a>, an
+    out-of-order RISC-V core that runs programs compiled with the standard GCC toolchain.
+  </p>
+  <p>
+    At CERN, I studied partial reconfiguration for machine learning on FPGAs. With partial reconfiguration, an FPGA can
+    load new parts of itself while it is running. A small FPGA cannot hold a whole model, but it can still run one, by
+    loading one part of the model at a time. This work became <a href="#dfx4ml">DFX4ML</a>. I also wrote the
+    <a href="#hls4ml">Vitis Unified backend for hls4ml</a>.
+  </p>
+</section>
+
+<section id="looking">
+  <h2>What I am looking for</h2>
+  <p>
+    I am looking for a <strong>fully funded PhD position</strong>, and I am available to start at the next intake.
+  </p>
+  <p>
+    I built most of what is on this page on my own. I chose the problems,
+    learned the toolchains, wrote the code, and ran the boards. I wrote all of Kathryn by hand, at a time before AI
+    coding assistants existed, and I used it to build a working out-of-order core.
+    I also got FPGA hardware running on a bench. The compiler backend submitted PR was not solo work: I wrote it
+    at CERN, with supervision and together with colleagues.
+  </p>
+  <p>
+    I would now like to learn from experienced researchers. With an advisor, a research group, and funding, I am
+    confident that I can take this work much further. I am asking for that opportunity.
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Major projects</h2>
+
+  <article id="kathryn" class="project">
+    <h3>Kathryn: cycle-accurate hardware design framework</h3>
+    <p class="links">
+      <a href="https://github.com/Tanawin1701d/Kathryn">github.com/Tanawin1701d/Kathryn</a> &middot;
+      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a>
+    </p>
+    <p class="status"><a href="assets/kathryn-tcad.pdf">Under review at IEEE TCAD &middot; paper (PDF)</a></p>
+    <p>
+      A C++ framework for cycle-accurate hardware design. Behavior is a flow of operations, not structural RTL, and
+      models stay synthesizable.
+    </p>
+    <ul class="bullets">
+      <li>
+        <strong>Host-language abstraction:</strong> the model is written in C++, so templates, inheritance, and
+        object-oriented reuse describe and parameterize the hardware.
+      </li>
+      <li>
+        <strong>Hybrid Design Flow:</strong> control flow as blocks; stalls, kills, and back-pressure are handled by
+        the framework.
+      </li>
+      <li>
+        <strong>Decentralized update:</strong> a resource is updated where the event happens, not at one driver.
+      </li>
+      <li>
+        <strong>Hardware Aggregator:</strong> many entries managed as one bundle.
+      </li>
+      <li>
+        <strong>Result:</strong> 67.85%, 63.55%, and 56.67% fewer control, data, and total lines than the RIDECORE
+        Verilog, same cycle behavior.
+      </li>
+    </ul>
+  </article>
+
+  <article id="kride" class="project">
+    <h3>Kride: out-of-order superscalar RISC-V core</h3>
+    <p class="links">
+      <a href="https://www.kathryn-tools.org/cppbook/kride/overview/">kathryn-tools.org/cppbook/kride</a> &middot;
+      <a href="https://github.com/Tanawin1701d/Kathryn/tree/master/src/example/o3">built in the Kathryn repository,
+      <code>src/example/o3</code></a>
+    </p>
+    <p>
+      An out-of-order superscalar RV32I core written in Kathryn, re-implementing the Verilog core RIDECORE.
+    </p>
+    <ul class="bullets">
+      <li>
+        Six stages, a two-wide in-order front end, a multi-lane back end, five reservation stations, a reorder buffer,
+        and exact misprediction recovery from five speculative tags.
+      </li>
+      <li>
+        <strong>Bit-exact</strong> against RIDECORE over ten workloads and 2,231,367 cycles; on a Kria KV260 the board
+        matches simulation cycle for cycle.
+      </li>
+    </ul>
+  </article>
+
+  <article id="dfx4ml" class="project">
+    <h3>DFX4ML: CPU-free partial reconfiguration for ML inference</h3>
+    <p class="links">
+      <a href="https://github.com/Tanawin1701d/dfx4ml_infra">github.com/Tanawin1701d/dfx4ml_infra</a> &middot;
+      <a href="https://cds.cern.ch/record/2939815">presentation</a>
+    </p>
+    <p>
+      A small FPGA cannot hold a large model, so DFX4ML reloads parts of itself while it is running.
+    </p>
+    <ul class="bullets">
+      <li>
+        <strong>DFX Manager:</strong> Verilog state machines drive ICAP and load partial bitstreams with no CPU.
+      </li>
+      <li>
+        <strong>DFX Streamer:</strong> BRAM and URAM buffers carry activations between network segments.
+      </li>
+      <li>
+        Two regions ping-pong, so one computes while the other is reconfigured. Tested on a Kria KV260.
+      </li>
+      <li>
+        Built at CERN under the supervision of Nicolò Ghielmetti.
+      </li>
+    </ul>
+  </article>
+
+  <article id="carolyne" class="project">
+    <h3>Carolyne: ISA-agnostic out-of-order CPU generator</h3>
+    <p class="links">
+      <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a>
+    </p>
+    <p class="status">Work in progress, currently building</p>
+    <p>
+      Carolyne separates the ISA from the microarchitecture.
+    </p>
+    <ul class="bullets">
+      <li>
+        The engine is written once, against a fixed µop contract. A new ISA arrives as a Python description package,
+        from which the engine builds its rename tables, decoders, register files, and commit logic.
+      </li>
+      <li>
+        Aim: an out-of-order core for a new ISA without designing a microarchitecture. First target: RV32I and a
+        mini-x86.
+      </li>
+    </ul>
+  </article>
+
+  <article id="hls4ml" class="project">
+    <h3>hls4ml: Vitis Unified backend</h3>
+    <p class="links">
+      <a href="https://github.com/fastmachinelearning/hls4ml/pull/1376">fastmachinelearning/hls4ml PR #1376</a>
+    </p>
+    <p>
+      A complete Keras → HLS → bitstream → PYNQ-driver flow for AMD's Vitis Unified toolchain.
+    </p>
+    <ul class="bullets">
+      <li>
+        Generates AXI wrappers, links the platform, optimizes FIFO depth.
+      </li>
+      <li>
+        Written as a CERN Summer Student with the hls4ml team; the pull request is under review.
+      </li>
+    </ul>
+  </article>
+
+  <h3 class="sub">Earlier work</h3>
+  <ul class="earlier">
+    <li>
+      <strong><a href="https://github.com/Tanawin1701d/Kathryn-I">Kathryn-I</a></strong>: an out-of-order core written by
+      hand in Verilog, since 2021. Writing it by hand is the reason I wanted a higher level of abstraction.
+    </li>
+  </ul>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>CERN</strong>, Research Intern, FPGA Systems (Edge SpAIce / hls4ml)</span>
+      <span class="when">Jun – Aug 2025</span>
+    </div>
+    <p>Geneva, Switzerland.</p>
+    <ul class="bullets">
+      <li>I wrote the Vitis Unified backend for hls4ml.</li>
+      <li>I built the control logic for FPGA dynamic partial reconfiguration, and the AXI data paths.</li>
+      <li>I deployed the designs on a ZCU102 and a Kria KV260, using PYNQ and PetaLinux.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>Chulalongkorn University</strong>, Teaching Assistant, Hardware Synthesis Lab</span>
+      <span class="when">Aug 2024 – Jun 2025</span>
+    </div>
+    <ul class="bullets">
+      <li>I maintained the Verilog lab material.</li>
+      <li>I developed RISC-V hardware models for teaching.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>M.S. in Computer Science</strong>, Chulalongkorn University</span>
+      <span class="when">2023 – 2026</span>
+    </div>
+    <ul class="bullets">
+      <li>GPA 3.94 / 4.00.</li>
+      <li>All graduate requirements completed.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>B.Eng. in Computer Engineering</strong>, Chulalongkorn University</span>
+      <span class="when">2019 – 2023</span>
+    </div>
+    <ul class="bullets">
+      <li>GPA 3.59 / 4.00, Second-Class Honors.</li>
+    </ul>
+  </div>
+
+  <p class="note">
+    TOEFL iBT 90 / 120, August 2026. &nbsp;
+    TOEIC 885 (Listening 465 / Reading 420), December 2025.
+  </p>
+</section>
+
+<section id="publications">
+  <h2>Publications &amp; talks</h2>
+  <ul class="pubs">
+    <li>
+      <strong>Kathryn: A Cycle-Accurate Control Flow and Resource Abstraction HDL Framework. A Case Study of a RISC-V
+      Out-of-Order Superscalar CPU.</strong>
+      Tanawin Devaveja and Krerk Piromsopa. Under review at IEEE Transactions on Computer-Aided Design of Integrated
+      Circuits and Systems (TCAD). <a href="assets/kathryn-tcad.pdf">Manuscript (PDF)</a>.
+    </li>
+    <li>
+      <strong>Vitis Unified backend for hls4ml.</strong>
+      Open-source contribution, <a href="https://github.com/fastmachinelearning/hls4ml/pull/1376">PR #1376</a>
+      (under maintainer review).
+    </li>
+    <li>
+      <strong>DFX4ML: partial reconfiguration for ML inference on FPGAs.</strong>
+      Talk, CERN Edge SpAIce technical meeting,
+      <a href="https://cds.cern.ch/record/2939815">cds.cern.ch/record/2939815</a>, 2025.
+    </li>
+    <li>
+      <strong>HoShi: A C++ Framework for High-Performance Hardware Simulation.</strong>
+      Tanawin Devaveja. ECTI-CON.
+    </li>
+  </ul>
+</section>
+
+<section id="skills">
+  <h2>Tools</h2>
+  <p class="note">
+    <strong>Hardware:</strong> Verilog, VHDL, AXI/AXI-Stream, RISC-V, partial reconfiguration, Vivado, Vitis HLS, PYNQ,
+    PetaLinux. &nbsp;
+    <strong>Software:</strong> C, C++, Python, Rust, Scala, Go, Java. &nbsp;
+    <strong>Architecture:</strong> out-of-order execution, Tomasulo, speculative execution, HW/SW co-design, gem5,
+    Intel Pin, VTune.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>Last updated August 2026. Source: <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a></p>
+</footer>
+
+</body>
+</html>

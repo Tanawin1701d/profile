@@ -1,0 +1,247 @@
+/* Tanawin Devaveja, personal page.
+   Minimal, single stylesheet, no build step, no JavaScript. */
+
+:root {
+  --bg:        #ffffff;
+  --fg:        #1b1b1d;
+  --muted:     #5f6368;
+  --rule:      #e3e4e8;
+  --link:      #14507a;
+  --link-hover:#0b3a5c;
+  --accent:    #c9ced8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #16181c;
+    --fg:        #e6e7ea;
+    --muted:     #a0a5ae;
+    --rule:      #2c2f36;
+    --link:      #7fb6e0;
+    --link-hover:#a8cff0;
+    --accent:    #3a3f49;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
+  max-width: 46rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* ---- links ---- */
+
+a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--accent); }
+a:hover { color: var(--link-hover); border-bottom-color: currentColor; }
+
+/* ---- masthead ---- */
+
+.masthead {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.photo {
+  width: 128px;
+  height: auto;
+  flex: 0 0 auto;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+}
+
+.ident { min-width: 0; }
+
+h1 {
+  margin: 0 0 .35rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+}
+
+.tagline { margin: 0 0 .5rem; color: var(--fg); }
+.affil   { margin: 0 0 .9rem; color: var(--muted); }
+
+.contact {
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+/* ---- section nav ---- */
+
+.toc {
+  margin: 1.1rem 0 2.5rem;
+  font-size: .88rem;
+  color: var(--muted);
+}
+
+.toc a {
+  display: inline-block;
+  margin: 0 1.1rem .35rem 0;
+  border-bottom: none;
+  color: var(--muted);
+}
+
+.toc a:hover { color: var(--link); }
+
+/* ---- sections ---- */
+
+section { margin-bottom: 2.75rem; }
+
+h2 {
+  margin: 0 0 1rem;
+  padding-bottom: .3rem;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  margin: 0 0 .25rem;
+  font-size: 1.06rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+h3.sub {
+  margin-top: 2.25rem;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+p { margin: 0 0 .9rem; }
+section p:last-child { margin-bottom: 0; }
+
+em     { font-style: italic; }
+strong { font-weight: 600; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .86em;
+  padding: .1em .3em;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* ---- projects ---- */
+
+.project {
+  margin-bottom: 1.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+.project .links {
+  margin: 0 0 .55rem;
+  font-size: .88rem;
+  color: var(--muted);
+}
+
+.project .status a {
+  color: inherit;
+  border-bottom: none;
+}
+
+.project .status a:hover { border-bottom: 1px solid currentColor; }
+
+.project .status {
+  display: inline-block;
+  margin: 0 0 .6rem;
+  padding: .1rem .5rem;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  border-radius: 3px;
+  border: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.earlier { margin: .75rem 0 0; padding-left: 1.15rem; }
+.earlier li { margin-bottom: .6rem; }
+
+/* ---- bullet detail lists ---- */
+
+.bullets { margin: .5rem 0 0; padding-left: 1.15rem; }
+.bullets li { margin-bottom: .4rem; }
+.bullets li:last-child { margin-bottom: 0; }
+.bullets ::marker { color: var(--muted); }
+
+/* ---- experience / education entries ---- */
+
+.entry { margin-bottom: 1.4rem; }
+
+.entry-head {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: .2rem;
+}
+
+.entry-head .when {
+  flex: 0 0 auto;
+  font-size: .87rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.entry p { margin: 0; color: var(--fg); }
+
+.note { font-size: .92rem; color: var(--muted); }
+
+/* ---- publications ---- */
+
+.pubs { margin: 0; padding-left: 1.15rem; }
+.pubs li { margin-bottom: .7rem; }
+
+/* ---- footer ---- */
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+footer p { margin: 0; }
+
+/* ---- narrow screens ---- */
+
+@media (max-width: 34rem) {
+  body { padding: 2.25rem 1.15rem 3rem; font-size: 16px; }
+
+  .masthead { flex-direction: column; gap: 1.1rem; }
+  .photo { width: 104px; height: auto; }
+  h1 { font-size: 1.7rem; }
+
+  .entry-head { flex-direction: column; gap: 0; }
+  .entry-head .when { font-size: .84rem; }
+}
+
+/* ---- print ---- */
+
+@media print {
+  :root { --bg: #fff; --fg: #000; --muted: #444; --rule: #bbb; --link: #000; --accent: #bbb; }
+  body { max-width: none; padding: 0; font-size: 11pt; }
+  .toc { display: none; }
+  a { border-bottom: none; }
+  .project, .entry, section { break-inside: avoid; }
+}
