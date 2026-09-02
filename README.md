@@ -1,4 +1,4 @@
-# cv_web: personal academic page
+# profile: personal academic page
 
 Static personal page for PhD applications. No build step, no dependencies. The
 only JavaScript is a short inline block at the bottom of `index.html`, purely
@@ -21,13 +21,17 @@ python3 -m http.server 8000     # then open http://localhost:8000
 
 ## Deploy to GitHub Pages
 
-1. Create a repo named `Tanawin1701d.github.io` (user site, served at
-   `https://tanawin1701d.github.io`), or any repo if a project URL is fine.
-2. Push these files to the default branch.
-3. Repo → Settings → Pages → Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
+Live at <https://tanawin1701d.github.io/profile/>, served from the public repo
+`Tanawin1701d/profile`, branch `master`, folder `/ (root)`. A push to `master`
+rebuilds the site within a minute or so.
 
-For a custom domain, add a `CNAME` file containing the domain and point a DNS
-record at GitHub Pages.
+Settings → Pages holds that configuration if it ever needs changing. For a
+custom domain, add a `CNAME` file containing the domain and point a DNS record
+at GitHub Pages.
+
+The repo is public, which GitHub Pages requires on a free account. Anything
+committed here is world-readable, including the whole git history, so do not
+commit a file you would not publish.
 
 ## Updating
 
