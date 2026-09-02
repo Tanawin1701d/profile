@@ -48,8 +48,8 @@
     In my third undergraduate year, I studied computer architecture on my own, from online material. I then tried to
     write an out-of-order superscalar RISC-V CPU without supervision. The work was much harder than I expected, and I
     did not finish it. That attempt decided the direction of everything I have done since. As a master's student, I
-    first built the tool I had been missing: <a href="#kathryn">Kathryn</a>, a framework that hides most of the
-    low-level design work. Chisel was the inspiration. I then used Kathryn to build <a href="#kride">Kride</a>, an
+    first built the tool I had been missing: <a href="#kathryn">Kathryn</a>, a framework that hides many of the
+    low-level design tasks. Chisel was the inspiration. I then used Kathryn to build <a href="#kride">Kride</a>, an
     out-of-order RISC-V core that runs programs compiled with the standard GCC toolchain.
   </p>
   <p>
@@ -91,13 +91,15 @@
     </summary>
     <p class="links">
       <a href="https://github.com/Tanawin1701d/Kathryn">github.com/Tanawin1701d/Kathryn</a> &middot;
-      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a>
+      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a> &middot;
+      <a href="https://tanawin1701d.github.io/Kathryn_web/">tanawin1701d.github.io/Kathryn_web</a>
     </p>
     <p class="status"><a href="assets/kathryn-tcad.pdf">Under review at IEEE TCAD &middot; paper (PDF)</a></p>
     <ul class="bullets">
       <li>
-        <strong>Host-language abstraction:</strong> the model is written in C++, so templates, inheritance, and
-        object-oriented reuse describe and parameterize the hardware.
+        <strong>Host-language abstraction:</strong> the model is written in Python against a Rust engine, bound with
+        PyO3, so ordinary classes, functions, and composition describe and parameterize the hardware. The legacy
+        version did the same with C++ templates and inheritance.
       </li>
       <li>
         <strong>Hybrid Design Flow:</strong> control flow as blocks; stalls, kills, and back-pressure are handled by
@@ -151,23 +153,15 @@
     <summary>
       <h3>Carolyne: ISA-agnostic out-of-order CPU generator</h3>
       <span class="brief">
-        Carolyne separates the ISA from the microarchitecture. Currently in progress.
+        Carolyne separates the ISA from the microarchitecture, aiming at a synthesizable out-of-order implementation
+        of a new instruction set without building a microarchitecture for it. Currently in progress.
       </span>
     </summary>
     <p class="links">
-      <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a>
+      <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a> &middot;
+      <a href="https://www.kathryn-tools.org/carolyne/">kathryn-tools.org/carolyne</a> &middot;
+      <a href="https://tanawin1701d.github.io/Kathryn_web/carolyne/">tanawin1701d.github.io/Kathryn_web/carolyne</a>
     </p>
-    <p class="status">Work in progress, currently building</p>
-    <ul class="bullets">
-      <li>
-        The engine is written once, against a fixed µop contract. A new ISA arrives as a Python description package,
-        from which the engine builds its rename tables, decoders, register files, and commit logic.
-      </li>
-      <li>
-        Aim: an out-of-order core for a new ISA without designing a microarchitecture. First target: RV32I and a
-        mini-x86.
-      </li>
-    </ul>
   </details>
 
   <details id="dfx4ml" class="project">
@@ -287,7 +281,7 @@
       <span class="when">Aug 2024 – Jun 2025</span>
     </div>
     <ul class="bullets">
-      <li>I maintained the Verilog lab material.</li>
+      <li>I tested the Verilog lab material.</li>
       <li>I developed RISC-V hardware models for teaching.</li>
     </ul>
   </div>
