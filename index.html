@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Tanawin Devaveja</title>
-<meta name="description" content="Tanawin Devaveja: computer architecture, FPGA systems, and hardware modeling. Kathryn, Kride, DFX4ML, Carolyne, hls4ml.">
+<meta name="description" content="Tanawin Devaveja: computer architecture, FPGA systems, and hardware modeling. Kathryn, Kride, DFX4ML, Carolyne, hls4ml, and a Vivado plugin for IntelliJ IDEA.">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9635;</text></svg>">
 </head>
@@ -45,7 +46,7 @@
   </p>
   <p>
     In my third undergraduate year, I studied computer architecture on my own, from online material. I then tried to
-    write an out-of-order superscalar RISC-V CPU. I had no supervisor. The work was much harder than I expected, and I
+    write an out-of-order superscalar RISC-V CPU without supervision. The work was much harder than I expected, and I
     did not finish it. That attempt decided the direction of everything I have done since. As a master's student, I
     first built the tool I had been missing: <a href="#kathryn">Kathryn</a>, a framework that hides most of the
     low-level design work. Chisel was the inspiration. I then used Kathryn to build <a href="#kride">Kride</a>, an
@@ -78,19 +79,21 @@
 </section>
 
 <section id="projects">
-  <h2>Major projects</h2>
+  <h2>Major projects <span class="hint">click a project for details</span></h2>
 
-  <article id="kathryn" class="project">
-    <h3>Kathryn: cycle-accurate hardware design framework</h3>
+  <details id="kathryn" class="project">
+    <summary>
+      <h3>Kathryn: cycle-accurate hardware design framework <span class="org">Chulalongkorn University</span></h3>
+      <span class="brief">
+        A hardware construction DSL in Rust and Python: abstract control flow, decentralized update, and hardware
+        aggregation, with no structural RTL. The legacy C++ version is <strong> under review at IEEE TCAD</strong>.
+      </span>
+    </summary>
     <p class="links">
       <a href="https://github.com/Tanawin1701d/Kathryn">github.com/Tanawin1701d/Kathryn</a> &middot;
       <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a>
     </p>
     <p class="status"><a href="assets/kathryn-tcad.pdf">Under review at IEEE TCAD &middot; paper (PDF)</a></p>
-    <p>
-      A C++ framework for cycle-accurate hardware design. Behavior is a flow of operations, not structural RTL, and
-      models stay synthesizable.
-    </p>
     <ul class="bullets">
       <li>
         <strong>Host-language abstraction:</strong> the model is written in C++, so templates, inheritance, and
@@ -110,18 +113,27 @@
         <strong>Result:</strong> 67.85%, 63.55%, and 56.67% fewer control, data, and total lines than the RIDECORE
         Verilog, same cycle behavior.
       </li>
+      <li>
+        <strong>Size:</strong> 27,321 lines of C++ across 410 files in the legacy version; 12,709 lines of Rust and
+        1,308 of Python across 224 files in the current one. Source only, tests excluded, measured with
+        <code>cloc</code>.
+      </li>
     </ul>
-  </article>
+  </details>
 
-  <article id="kride" class="project">
-    <h3>Kride: out-of-order superscalar RISC-V core</h3>
+  <details id="kride" class="project">
+    <summary>
+      <h3>Kride: out-of-order superscalar RISC-V core <span class="org">Chulalongkorn University</span></h3>
+      <span class="brief">
+        An out-of-order superscalar RV32I core written in Kathryn, re-implementing the Verilog core RIDECORE, and the
+        case study of the <strong>IEEE TCAD</strong> submission. <strong>It runs programs compiled with the standard
+        GCC toolchain</strong>, with a custom linker script and no system calls.
+      </span>
+    </summary>
     <p class="links">
       <a href="https://www.kathryn-tools.org/cppbook/kride/overview/">kathryn-tools.org/cppbook/kride</a> &middot;
       <a href="https://github.com/Tanawin1701d/Kathryn/tree/master/src/example/o3">built in the Kathryn repository,
       <code>src/example/o3</code></a>
-    </p>
-    <p>
-      An out-of-order superscalar RV32I core written in Kathryn, re-implementing the Verilog core RIDECORE.
     </p>
     <ul class="bullets">
       <li>
@@ -133,17 +145,44 @@
         matches simulation cycle for cycle.
       </li>
     </ul>
-  </article>
+  </details>
 
-  <article id="dfx4ml" class="project">
-    <h3>DFX4ML: CPU-free partial reconfiguration for ML inference</h3>
+  <details id="carolyne" class="project">
+    <summary>
+      <h3>Carolyne: ISA-agnostic out-of-order CPU generator</h3>
+      <span class="brief">
+        Carolyne separates the ISA from the microarchitecture. Currently in progress.
+      </span>
+    </summary>
+    <p class="links">
+      <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a>
+    </p>
+    <p class="status">Work in progress, currently building</p>
+    <ul class="bullets">
+      <li>
+        The engine is written once, against a fixed µop contract. A new ISA arrives as a Python description package,
+        from which the engine builds its rename tables, decoders, register files, and commit logic.
+      </li>
+      <li>
+        Aim: an out-of-order core for a new ISA without designing a microarchitecture. First target: RV32I and a
+        mini-x86.
+      </li>
+    </ul>
+  </details>
+
+  <details id="dfx4ml" class="project">
+    <summary>
+      <h3>DFX4ML: CPU-free partial reconfiguration for ML inference <span class="org">CERN</span></h3>
+      <span class="brief">
+        A small FPGA cannot hold a large model, so DFX4ML reloads parts of itself while it is running.
+      </span>
+    </summary>
     <p class="links">
       <a href="https://github.com/Tanawin1701d/dfx4ml_infra">github.com/Tanawin1701d/dfx4ml_infra</a> &middot;
       <a href="https://cds.cern.ch/record/2939815">presentation</a>
     </p>
-    <p>
-      A small FPGA cannot hold a large model, so DFX4ML reloads parts of itself while it is running.
-    </p>
+    <p class="status"><a href="https://github.com/Tanawin1701d/dfx4ml_infra/blob/master/doc/tech_report_v1.0_beta.pdf">Technical
+      report v1.0 beta &middot; PDF</a></p>
     <ul class="bullets">
       <li>
         <strong>DFX Manager:</strong> Verilog state machines drive ICAP and load partial bitstreams with no CPU.
@@ -158,36 +197,18 @@
         Built at CERN under the supervision of Nicolò Ghielmetti.
       </li>
     </ul>
-  </article>
+  </details>
 
-  <article id="carolyne" class="project">
-    <h3>Carolyne: ISA-agnostic out-of-order CPU generator</h3>
-    <p class="links">
-      <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a>
-    </p>
-    <p class="status">Work in progress, currently building</p>
-    <p>
-      Carolyne separates the ISA from the microarchitecture.
-    </p>
-    <ul class="bullets">
-      <li>
-        The engine is written once, against a fixed µop contract. A new ISA arrives as a Python description package,
-        from which the engine builds its rename tables, decoders, register files, and commit logic.
-      </li>
-      <li>
-        Aim: an out-of-order core for a new ISA without designing a microarchitecture. First target: RV32I and a
-        mini-x86.
-      </li>
-    </ul>
-  </article>
-
-  <article id="hls4ml" class="project">
-    <h3>hls4ml: Vitis Unified backend</h3>
+  <details id="hls4ml" class="project">
+    <summary>
+      <h3>hls4ml: Vitis Unified backend <span class="org">CERN</span></h3>
+      <span class="brief">
+        A complete Keras → HLS → bitstream → PYNQ-driver flow for AMD's Vitis Unified toolchain, written with the
+        help of the hls4ml community.
+      </span>
+    </summary>
     <p class="links">
       <a href="https://github.com/fastmachinelearning/hls4ml/pull/1376">fastmachinelearning/hls4ml PR #1376</a>
-    </p>
-    <p>
-      A complete Keras → HLS → bitstream → PYNQ-driver flow for AMD's Vitis Unified toolchain.
     </p>
     <ul class="bullets">
       <li>
@@ -197,7 +218,43 @@
         Written as a CERN Summer Student with the hls4ml team; the pull request is under review.
       </li>
     </ul>
-  </article>
+  </details>
+
+  <details id="hdl-vivado-plugin" class="project">
+    <summary>
+      <h3>HDL and Vivado + MCP Support: IntelliJ IDEA plugin</h3>
+      <span class="brief">
+        Verilog and SystemVerilog tooling for IntelliJ IDEA that hands a live Vivado session to an AI assistant over
+        the Model Context Protocol. <strong>1,500 downloads</strong> on the JetBrains Marketplace.
+      </span>
+    </summary>
+    <p class="links">
+      <a href="https://plugins.jetbrains.com/plugin/30907-hdl-and-vivado--mcp-support">JetBrains Marketplace</a> &middot;
+      <a href="https://github.com/Merge-Panic-Society/JetBrain-Verilog-Vivado-Plugins">github.com/Merge-Panic-Society/JetBrain-Verilog-Vivado-Plugins</a>
+    </p>
+    <p class="status">1,500 downloads &middot; rated 4.4</p>
+    <ul class="bullets">
+      <li>
+        <strong>MCP server:</strong> thirty parameter-checked Vivado commands, from project creation to bitstream and
+        programming. Safety-gated: loopback host only, a per-session bearer token, and raw Tcl behind an opt-in.
+      </li>
+      <li>
+        <strong>Language support:</strong> highlighting, completion, and cross-module linting for Verilog,
+        SystemVerilog, Tcl, and XDC, through Icarus Verilog or Verilator.
+      </li>
+      <li>
+        <strong>Simulation and waveforms:</strong> run a testbench and read the VCD in an in-IDE waveform viewer, which
+        the assistant can drive as well.
+      </li>
+      <li>
+        <strong>Vivado console:</strong> a bidirectional Tcl terminal over a socket, so the Vivado GUI stays usable
+        while commands run.
+      </li>
+      <li>
+        Written in Kotlin on the IntelliJ Platform, for IntelliJ IDEA 2025.1 and later.
+      </li>
+    </ul>
+  </details>
 
   <h3 class="sub">Earlier work</h3>
   <ul class="earlier">
@@ -246,7 +303,6 @@
     </div>
     <ul class="bullets">
       <li>GPA 3.94 / 4.00.</li>
-      <li>All graduate requirements completed.</li>
     </ul>
   </div>
 
@@ -282,12 +338,14 @@
     </li>
     <li>
       <strong>DFX4ML: partial reconfiguration for ML inference on FPGAs.</strong>
-      Talk, CERN Edge SpAIce technical meeting,
-      <a href="https://cds.cern.ch/record/2939815">cds.cern.ch/record/2939815</a>, 2025.
+      Tanawin Devaveja, under the supervision of Nicolò Ghielmetti. Technical report v1.0 beta, CERN, 2025.
+      <a href="https://github.com/Tanawin1701d/dfx4ml_infra/blob/master/doc/tech_report_v1.0_beta.pdf">Report (PDF)</a>.
+      Presented as a talk at the CERN Edge SpAIce technical meeting,
+      <a href="https://cds.cern.ch/record/2939815">cds.cern.ch/record/2939815</a>.
     </li>
     <li>
       <strong>HoShi: A C++ Framework for High-Performance Hardware Simulation.</strong>
-      Tanawin Devaveja. ECTI-CON.
+      Tanawin Devaveja and Krerk Piromsopa. ECTI-CON.
     </li>
   </ul>
 </section>
@@ -308,6 +366,30 @@
 <footer>
   <p>Last updated August 2026. Source: <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a></p>
 </footer>
+
+<script>
+/* Progressive enhancement only. The projects expand and collapse on their own,
+   with no script. This covers two cases the browser does not: opening a project
+   that an in-page link points at, and expanding every project before printing. */
+(function () {
+  function openTarget() {
+    if (!location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === "DETAILS" && !el.open) {
+      el.open = true;
+      el.scrollIntoView();
+    }
+  }
+
+  window.addEventListener("hashchange", openTarget);
+  openTarget();
+
+  window.addEventListener("beforeprint", function () {
+    const all = document.querySelectorAll("details");
+    for (let i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
 
 </body>
 </html>

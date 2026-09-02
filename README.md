@@ -1,10 +1,13 @@
 # cv_web: personal academic page
 
-Static personal page for PhD applications. No build step, no dependencies, no JavaScript.
+Static personal page for PhD applications. No build step, no dependencies. The
+only JavaScript is a short inline block at the bottom of `index.html`, purely
+progressive enhancement: it opens a collapsed project when an in-page link
+points at it, and expands every project before printing.
 
 ```
 index.html      all content, edit this
-style.css       all styling (light/dark/print aware)
+style.css       all styling (always light background, print aware)
 assets/photo.jpg
 assets/cv.pdf   downloadable CV (currently CV-Tanawin-Devaveja-NTU2.pdf)
 .nojekyll       tells GitHub Pages to serve the files as-is
@@ -29,5 +32,8 @@ record at GitHub Pages.
 ## Updating
 
 - **CV**: overwrite `assets/cv.pdf`; the link never changes.
-- **New project**: copy an existing `<article class="project">` block in `index.html`.
+- **New project**: copy an existing `<details class="project">` block in `index.html`.
+  The `<summary>` holds the title and the one-line `.brief` shown while collapsed;
+  everything after it (links, status badge, bullets) appears when expanded. Add
+  `open` to the `<details>` tag to have a project start expanded.
 - **Date**: the footer line at the bottom of `index.html`.
