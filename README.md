@@ -9,7 +9,7 @@ points at it, and expands every project before printing.
 index.html      all content, edit this
 style.css       all styling (always light background, print aware)
 assets/photo.jpg
-assets/cv.pdf   downloadable CV (currently CV-Tanawin-Devaveja-NTU2.pdf)
+assets/kathryn-tcad.pdf   the TCAD manuscript, linked from the Kathryn project
 .nojekyll       tells GitHub Pages to serve the files as-is
 ```
 
@@ -31,7 +31,9 @@ record at GitHub Pages.
 
 ## Updating
 
-- **CV**: overwrite `assets/cv.pdf`; the link never changes.
+- **CV**: no CV is published. To add one, drop a PDF in `assets/` and link it
+  from the contact block in `index.html`. Use a general CV, not one addressed
+  to a single institution.
 - **New project**: copy an existing `<details class="project">` block in `index.html`.
   The `<summary>` holds the title and the one-line `.brief` shown while collapsed;
   everything after it (links, status badge, bullets) appears when expanded. Add
