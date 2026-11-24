@@ -47,4 +47,4 @@ commit a file you would not publish.
   `open` to the `<details>` tag to have a project start expanded.
 - **Date**: the footer line at the bottom of `index.html`.
 - **CSS changes**: bump the `?v=` date on the `style.css` link in `index.html`,
-  or browsers keep showing the cached old stylesheet.
+  or browsers keep showing the cached old stylesheet. Same for `photo.jpg`.
