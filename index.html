@@ -3,28 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <title>Tanawin Devaveja</title>
-<meta name="description" content="Tanawin Devaveja: computer architecture, FPGA systems, and hardware modeling. Kathryn, Kride, DFX4ML, Carolyne, hls4ml, and a Vivado plugin for IntelliJ IDEA.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Tanawin Devaveja: computer architecture, FPGA systems, and hardware design productivity. Kathryn (IEEE TCAD 2026), Kride, Carolyne, DFX4ML, hls4ml, and a Vivado plugin for IntelliJ IDEA.">
+<link rel="stylesheet" href="style.css?v=2026-11-24b">
+<script>
+/* apply the saved theme before the first paint, so the page does not flash */
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+})();
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9635;</text></svg>">
 </head>
 <body>
 
-<header class="masthead">
+<div class="layout">
+
+<aside class="sidebar">
   <img class="photo" src="assets/photo.jpg" alt="Tanawin Devaveja">
-  <div class="ident">
-    <h1>Tanawin Devaveja</h1>
-    <p class="tagline">Computer architecture &middot; FPGA systems &middot; hardware modeling and simulation</p>
-    <p class="affil">M.S. in Computer Science, Chulalongkorn University. Applying for PhD positions.</p>
-    <p class="contact">
-      <a href="mailto:tanawin1701d@outlook.com">tanawin1701d@outlook.com</a> &middot;
-      <a href="mailto:6670107821@student.chula.ac.th">6670107821@student.chula.ac.th</a><br>
-      <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a> &middot;
-      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a><br>
-      Pathum Thani, Thailand
-    </p>
-  </div>
+  <ul class="contact">
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/></svg><a href="assets/cv_tanawin_devaveja.pdf">CV (PDF)</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:tanawin1701d@outlook.com">tanawin1701d@outlook.com</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:6670107821@student.chula.ac.th">6670107821@student.chula.ac.th</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><a href="https://www.linkedin.com/in/tanawin-devaveja-1b266421a/">LinkedIn</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg><a href="https://scholar.google.com/citations?user=CcSFNN4AAAAJ&amp;hl=en">Google Scholar</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg><a href="https://www.kathryn-tools.org/">kathryn-tools.org</a></li>
+    <li><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Bangkok, Thailand</li>
+  </ul>
+  <button type="button" class="theme-btn" id="theme-btn"><svg class="ico moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="ico sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><span id="theme-label">Dark mode</span></button>
+</aside>
+
+<div class="content">
+
+<header class="masthead">
+  <h1>Tanawin Devaveja</h1>
+  <p class="tagline">Computer architecture &middot; FPGA systems &middot; hardware design productivity</p>
+  <p class="affil">M.S. in Computer Science, Chulalongkorn University. Applying for PhD positions.</p>
 </header>
 
 <nav class="toc">
@@ -34,6 +52,7 @@
   <a href="#experience">Experience</a>
   <a href="#education">Education</a>
   <a href="#publications">Publications &amp; talks</a>
+  <a href="#awards">Awards</a>
 </nav>
 
 <main>
@@ -41,7 +60,8 @@
 <section id="research">
   <h2>Profile</h2>
   <p>
-    I am an independent researcher working in computer architecture, FPGA design, and hardware generation.
+    My research interests are computer architecture and hardware design productivity: hardware construction
+    languages, out-of-order processor generators, FPGA accelerators for machine learning, and HW/SW co-design.
   </p>
   <p>
     In my third undergraduate year, I studied computer architecture on my own, from online material. I then tried to
@@ -49,13 +69,16 @@
     did not finish it. That attempt decided the direction of everything I have done since. As a master's student, I
     first built the tool I had been missing: <a href="#kathryn">Kathryn</a>, a framework that hides many of the
     low-level design tasks. Chisel was the inspiration. I then used Kathryn to build <a href="#kride">Kride</a>, an
-    out-of-order RISC-V core that runs programs compiled with the standard GCC toolchain.
+    out-of-order RISC-V core that re-implements the RIDECORE microarchitecture and runs programs compiled with the
+    standard GCC toolchain. Kathryn is published as a
+    first-author paper in <strong>IEEE TCAD, 2026</strong>. My current work, <a href="#carolyne">Carolyne</a>, builds
+    on Kathryn to generate one out-of-order engine for many instruction sets.
   </p>
   <p>
     At CERN, I studied partial reconfiguration for machine learning on FPGAs. With partial reconfiguration, an FPGA can
     load new parts of itself while it is running. A small FPGA cannot hold a whole model, but it can still run one, by
     loading one part of the model at a time. This work became <a href="#dfx4ml">DFX4ML</a>. I also wrote the
-    <a href="#hls4ml">Vitis Unified backend for hls4ml</a>.
+    <a href="#hls4ml">Vitis Unified backend for hls4ml</a>, which is now merged into hls4ml.
   </p>
 </section>
 
@@ -66,10 +89,10 @@
   </p>
   <p>
     I built most of what is on this page on my own. I chose the problems,
-    learned the toolchains, wrote the code, and ran the boards. I wrote all of Kathryn by hand, at a time before AI
-    coding assistants existed, and I used it to build a working out-of-order core.
-    I also got FPGA hardware running on a bench. The compiler backend submitted PR was not solo work: I wrote it
-    at CERN, with supervision and together with colleagues.
+    learned the toolchains, wrote the code, and ran the boards. I wrote the original C++ version of Kathryn by hand,
+    at a time before AI coding assistants existed, and I used it to build a working out-of-order core.
+    I also got FPGA hardware running on a bench. The hls4ml backend was not solo work: I wrote it at CERN, with
+    supervision and together with the hls4ml team.
   </p>
   <p>
     I would now like to learn from experienced researchers. With an advisor, a research group, and funding, I am
@@ -84,22 +107,17 @@
     <summary>
       <h3>Kathryn: cycle-accurate hardware design framework <span class="org">Chulalongkorn University</span></h3>
       <span class="brief">
-        A hardware construction DSL in Rust and Python: abstract control flow, decentralized update, and hardware
-        aggregation, with no structural RTL. The legacy C++ version is <strong> under review at IEEE TCAD</strong>.
+        A hardware construction framework with abstract control flow, decentralized update, and hardware aggregation,
+        with no structural RTL. <strong>Published in IEEE TCAD, 2026</strong>.
       </span>
     </summary>
     <p class="links">
       <a href="https://github.com/Tanawin1701d/Kathryn">github.com/Tanawin1701d/Kathryn</a> &middot;
-      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a> &middot;
-      <a href="https://tanawin1701d.github.io/Kathryn_web/">tanawin1701d.github.io/Kathryn_web</a>
+      <a href="https://pypi.org/project/kathryn/">pypi.org/project/kathryn</a> &middot;
+      <a href="https://www.kathryn-tools.org/">kathryn-tools.org</a>
     </p>
-    <p class="status"><a href="assets/kathryn-tcad.pdf">Under review at IEEE TCAD &middot; paper (PDF)</a></p>
+    <p class="status"><a href="https://doi.org/10.1109/TCAD.2026.3738973">IEEE TCAD, Early Access, 2026 &middot; doi</a></p>
     <ul class="bullets">
-      <li>
-        <strong>Host-language abstraction:</strong> the model is written in Python against a Rust engine, bound with
-        PyO3, so ordinary classes, functions, and composition describe and parameterize the hardware. The legacy
-        version did the same with C++ templates and inheritance.
-      </li>
       <li>
         <strong>Hybrid Design Flow:</strong> control flow as blocks; stalls, kills, and back-pressure are handled by
         the framework.
@@ -112,12 +130,16 @@
       </li>
       <li>
         <strong>Result:</strong> 67.85%, 63.55%, and 56.67% fewer control, data, and total lines than the RIDECORE
-        Verilog, same cycle behavior.
+        Verilog, 100% cycle-accurate. The paper also gives a qualitative comparison with Chisel.
       </li>
       <li>
-        <strong>Size:</strong> 27,321 lines of C++ across 410 files in the legacy version; 12,709 lines of Rust and
-        1,308 of Python across 224 files in the current one. Source only, tests excluded, measured with
-        <code>cloc</code>.
+        <strong>Known limit:</strong> simulation is about 16&times; slower than Verilator-compiled RIDECORE
+        (140.7&nbsp;s against 8.9&nbsp;s). Future work: optimize the generated HDL and study large-scale designs.
+      </li>
+      <li>
+        <strong>Size:</strong> the C++ version in the paper is 27,321 lines of code, 98.5% hand-written. It is now
+        rewritten as Python on a Rust engine (PyO3, about 14k lines, AI-assisted under fine-grained human control),
+        on PyPI: <code>pip install kathryn</code>.
       </li>
     </ul>
   </details>
@@ -126,9 +148,9 @@
     <summary>
       <h3>Kride: out-of-order superscalar RISC-V core <span class="org">Chulalongkorn University</span></h3>
       <span class="brief">
-        An out-of-order superscalar RV32I core written in Kathryn, re-implementing the Verilog core RIDECORE, and the
-        case study of the <strong>IEEE TCAD</strong> submission. <strong>It runs programs compiled with the standard
-        GCC toolchain</strong>, with a custom linker script and no system calls.
+        An out-of-order superscalar RV32IM core written in Kathryn, re-implementing the RIDECORE microarchitecture,
+        and the case study of the <strong>IEEE TCAD</strong> paper. <strong>It runs programs compiled with the
+        standard GCC toolchain</strong>.
       </span>
     </summary>
     <p class="links">
@@ -138,36 +160,57 @@
     </p>
     <ul class="bullets">
       <li>
-        Six stages, a two-wide in-order front end, a multi-lane back end, five reservation stations, a reorder buffer,
-        and exact misprediction recovery from five speculative tags.
+        All core logic is hand-written: six stages, five reservation stations, a reorder buffer, and five speculative
+        tags.
       </li>
       <li>
-        <strong>Bit-exact</strong> against RIDECORE over ten workloads and 2,231,367 cycles; on a Kria KV260 the board
-        matches simulation cycle for cycle.
+        <strong>Bit-exact</strong> against RIDECORE over ten workloads and 2.2M cycles.
+      </li>
+      <li>
+        Runs GCC-compiled programs on a Kria KV260, cycle for cycle equal to simulation.
       </li>
     </ul>
   </details>
 
   <details id="carolyne" class="project">
     <summary>
-      <h3>Carolyne: ISA-agnostic out-of-order CPU generator</h3>
+      <h3>Carolyne 0.1: ISA-agnostic out-of-order CPU generator <span class="org">current research</span></h3>
       <span class="brief">
-        Carolyne separates the ISA from the microarchitecture, aiming at a synthesizable out-of-order implementation
-        of a new instruction set without building a microarchitecture for it. Currently in progress.
+        One out-of-order engine, many ISAs. An ISA is a small Python description, and the engine generates the
+        decoder, rename, register files, and commit. Built on Kathryn, since Aug 2026.
       </span>
     </summary>
     <p class="links">
       <a href="https://github.com/Tanawin1701d/Carolyne">github.com/Tanawin1701d/Carolyne</a> &middot;
-      <a href="https://www.kathryn-tools.org/carolyne/">kathryn-tools.org/carolyne</a> &middot;
-      <a href="https://tanawin1701d.github.io/Kathryn_web/carolyne/">tanawin1701d.github.io/Kathryn_web/carolyne</a>
+      <a href="https://www.kathryn-tools.org/carolyne/">kathryn-tools.org/carolyne</a>
     </p>
+    <ul class="bullets">
+      <li>
+        <strong>RV32IM and MIPS32r2</strong> (user-level subsets, no system or CSR instructions) on one two-wide
+        engine.
+      </li>
+      <li>
+        Each ISA description is only about 600 lines; the shared engine is about 4,300.
+      </li>
+      <li>
+        17 C programs (-O0, -O2) match host execution on both ISAs in Verilator. MIPS32 passed all 34 runs
+        <strong>with no change to the engine</strong>.
+      </li>
+      <li>
+        Highly object-oriented: ISAs, stations, and execution units extend shared base classes.
+      </li>
+      <li>
+        <strong>Long-term goal:</strong> a universal microarchitecture modeling framework for CPUs, DSPs, and
+        accelerators, where humans and AI explore hardware designs together.
+      </li>
+    </ul>
   </details>
 
   <details id="dfx4ml" class="project">
     <summary>
       <h3>DFX4ML: CPU-free partial reconfiguration for ML inference <span class="org">CERN</span></h3>
       <span class="brief">
-        A small FPGA cannot hold a large model, so DFX4ML reloads parts of itself while it is running.
+        Runs a model too large for the FPGA by reconfiguring parts of the FPGA during inference.
       </span>
     </summary>
     <p class="links">
@@ -178,16 +221,23 @@
       report v1.0 beta &middot; PDF</a></p>
     <ul class="bullets">
       <li>
-        <strong>DFX Manager:</strong> Verilog state machines drive ICAP and load partial bitstreams with no CPU.
+        Verilog state machines drive ICAP, so the FPGA fabric reconfigures itself with no CPU in the loop.
       </li>
       <li>
-        <strong>DFX Streamer:</strong> BRAM and URAM buffers carry activations between network segments.
+        Reconfigures at 381 MB/s (2.9 MB in 7.4 ms), about 95% of the ICAP limit at 100 MHz.
       </li>
       <li>
-        Two regions ping-pong, so one computes while the other is reconfigured. Tested on a Kria KV260.
+        Two regions ping-pong, so one computes while the other is reloaded.
       </li>
       <li>
-        Built at CERN under the supervision of Nicolò Ghielmetti.
+        A Python flow splits a Keras model with hls4ml and builds every bitstream. Tested on a Kria KV260.
+      </li>
+      <li>
+        Ongoing: solving the on-chip buffer capacity and DDR4 bandwidth limits.
+      </li>
+      <li>
+        Built at CERN under the supervision of Nicolò Ghielmetti, and presented at the CERN Edge SpAIce technical
+        meeting.
       </li>
     </ul>
   </details>
@@ -196,8 +246,8 @@
     <summary>
       <h3>hls4ml: Vitis Unified backend <span class="org">CERN</span></h3>
       <span class="brief">
-        A complete Keras → HLS → bitstream → PYNQ-driver flow for AMD's Vitis Unified toolchain, written with the
-        help of the hls4ml community.
+        A full flow from a Keras model to HLS, bitstream, and PYNQ driver on AMD Vitis Unified.
+        <strong>Merged into hls4ml</strong> in Sep 2026.
       </span>
     </summary>
     <p class="links">
@@ -205,10 +255,10 @@
     </p>
     <ul class="bullets">
       <li>
-        Generates AXI wrappers, links the platform, optimizes FIFO depth.
+        Main author, with help from the hls4ml team.
       </li>
       <li>
-        Written as a CERN Summer Student with the hls4ml team; the pull request is under review.
+        Generates AXI wrappers, links the platform, and optimizes FIFO depth.
       </li>
     </ul>
   </details>
@@ -217,15 +267,15 @@
     <summary>
       <h3>HDL and Vivado + MCP Support: IntelliJ IDEA plugin</h3>
       <span class="brief">
-        Verilog and SystemVerilog tooling for IntelliJ IDEA that hands a live Vivado session to an AI assistant over
-        the Model Context Protocol. <strong>1,500 downloads</strong> on the JetBrains Marketplace.
+        Verilog and SystemVerilog tooling for IntelliJ IDEA that gives a live Vivado session to an AI assistant over
+        the Model Context Protocol. <strong>2,000 downloads</strong> on the JetBrains Marketplace.
       </span>
     </summary>
     <p class="links">
       <a href="https://plugins.jetbrains.com/plugin/30907-hdl-and-vivado--mcp-support">JetBrains Marketplace</a> &middot;
       <a href="https://github.com/Merge-Panic-Society/JetBrain-Verilog-Vivado-Plugins">github.com/Merge-Panic-Society/JetBrain-Verilog-Vivado-Plugins</a>
     </p>
-    <p class="status">1,500 downloads &middot; rated 4.4</p>
+    <p class="status">2,000 downloads &middot; rated 4.4</p>
     <ul class="bullets">
       <li>
         <strong>MCP server:</strong> thirty parameter-checked Vivado commands, from project creation to bitstream and
@@ -249,11 +299,19 @@
     </ul>
   </details>
 
-  <h3 class="sub">Earlier work</h3>
+  <h3 class="sub">Other projects</h3>
   <ul class="earlier">
     <li>
-      <strong><a href="https://github.com/Tanawin1701d/Kathryn-I">Kathryn-I</a></strong>: an out-of-order core written by
-      hand in Verilog, since 2021. Writing it by hand is the reason I wanted a higher level of abstraction.
+      <strong><a href="https://github.com/Tanawin1701d/allamaraine">allamaraine</a></strong> (Nov – Dec 2024): chess
+      moves from video to PGN, for Digital Image Processing (Dr. Punnarai Siricharoen). Hough-line board grid, hand
+      masking, EasyOCR board rotation, and a custom-trained YOLOv8 piece detector with multi-frame voting.
+      <strong>3rd overall</strong> in the class YOLO chess competition, across all sections.
+    </li>
+    <li>
+      <strong><a href="https://github.com/Tanawin1701d/Kathryn-I">Kathryn-I</a></strong> (Oct 2021 – Jan 2023): a
+      self-directed out-of-order RV32I CPU, unfinished. I wrote the core specification and the decode stage alone,
+      without a supervisor. Managing the control logic and wiring by hand became too complex, and this problem became
+      the motivation for Kathryn.
     </li>
   </ul>
 </section>
@@ -263,14 +321,47 @@
 
   <div class="entry">
     <div class="entry-head">
-      <span class="what"><strong>CERN</strong>, Research Intern, FPGA Systems (Edge SpAIce / hls4ml)</span>
+      <span class="what"><strong>Chulalongkorn University</strong>, Research Assistant</span>
+      <span class="when">Oct 2026 – present</span>
+    </div>
+    <ul class="bullets">
+      <li>Validate a RISC-V MCU, designed by undergraduate students as their capstone project, before fabrication.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>DFX4ML and hls4ml, continued work</strong>, Volunteer Contributor, research project</span>
+      <span class="when">Mar – Jul 2026</span>
+    </div>
+    <p>Remote.</p>
+    <ul class="bullets">
+      <li>Continued DFX4ML and the hls4ml Vitis Unified backend after the internship.</li>
+      <li>Ongoing: solving the on-chip buffer capacity and DDR4 bandwidth limits.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>Chulalongkorn University</strong>, Graduate Student, advised by Assoc. Prof. Krerk Piromsopa</span>
+      <span class="when">2023 – 2026</span>
+    </div>
+    <ul class="bullets">
+      <li>Designed and built Kathryn, and used it to build Kride, a re-implementation of the RIDECORE out-of-order
+        core. Published in IEEE TCAD.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="what"><strong>CERN</strong>, Research Intern, FPGA Systems for ML</span>
       <span class="when">Jun – Aug 2025</span>
     </div>
-    <p>Geneva, Switzerland.</p>
+    <p>Geneva, Switzerland. Fully funded. Supervised by Nicolò Ghielmetti.</p>
     <ul class="bullets">
-      <li>I wrote the Vitis Unified backend for hls4ml.</li>
-      <li>I built the control logic for FPGA dynamic partial reconfiguration, and the AXI data paths.</li>
-      <li>I deployed the designs on a ZCU102 and a Kria KV260, using PYNQ and PetaLinux.</li>
+      <li>Wrote the Vitis Unified backend for hls4ml.</li>
+      <li>Built the control logic for FPGA dynamic partial reconfiguration, and the AXI data paths.</li>
+      <li>Deployed the designs on a ZCU102 and a Kria KV260, using PYNQ and PetaLinux.</li>
     </ul>
   </div>
 
@@ -280,8 +371,8 @@
       <span class="when">Aug 2024 – Jun 2025</span>
     </div>
     <ul class="bullets">
-      <li>I tested the Verilog lab material.</li>
-      <li>I developed RISC-V hardware models for teaching.</li>
+      <li>Tested the Verilog lab material and built RISC-V hardware models for teaching.</li>
+      <li>Helped students debug their FPGA designs during lab sessions.</li>
     </ul>
   </div>
 </section>
@@ -296,6 +387,7 @@
     </div>
     <ul class="bullets">
       <li>GPA 3.94 / 4.00.</li>
+      <li>Thesis completed Dec 2025; final semester held for the TCAD publication.</li>
     </ul>
   </div>
 
@@ -306,11 +398,12 @@
     </div>
     <ul class="bullets">
       <li>GPA 3.59 / 4.00, Second-Class Honors.</li>
+      <li>Major GPA 3.76 / 4.00. GPA in years 3 and 4: 3.82 / 4.00.</li>
     </ul>
   </div>
 
   <p class="note">
-    TOEFL iBT 90 / 120, August 2026. &nbsp;
+    TOEFL iBT overall 5.0 / 6 (Reading 5.5, Listening 5.5, Speaking 4.0, Writing 5.0), 14 November 2026. &nbsp;
     TOEIC 885 (Listening 465 / Reading 420), December 2025.
   </p>
 </section>
@@ -319,26 +412,40 @@
   <h2>Publications &amp; talks</h2>
   <ul class="pubs">
     <li>
-      <strong>Kathryn: A Cycle-Accurate Control Flow and Resource Abstraction HDL Framework. A Case Study of a RISC-V
+      <strong>Kathryn: A Cycle-Accurate Control Flow and Resource Abstraction HDL Framework: A Case Study of a RISC-V
       Out-of-Order Superscalar CPU.</strong>
-      Tanawin Devaveja and Krerk Piromsopa. Under review at IEEE Transactions on Computer-Aided Design of Integrated
-      Circuits and Systems (TCAD). <a href="assets/kathryn-tcad.pdf">Manuscript (PDF)</a>.
+      Tanawin Devaveja and Krerk Piromsopa. IEEE Transactions on Computer-Aided Design of Integrated Circuits and
+      Systems (TCAD), Early Access, 2026.
+      <a href="https://doi.org/10.1109/TCAD.2026.3738973">doi</a> &middot;
+      <a href="https://github.com/Tanawin1701d/Kathryn">code</a> &middot;
+      <a href="https://www.kathryn-tools.org/">docs</a>
     </li>
     <li>
-      <strong>Vitis Unified backend for hls4ml.</strong>
-      Open-source contribution, <a href="https://github.com/fastmachinelearning/hls4ml/pull/1376">PR #1376</a>
-      (under maintainer review).
+      <strong>HoShi: A C++ Framework for High-Performance Hardware Simulation on Single-Core CPU.</strong>
+      Tanawin Devaveja and Krerk Piromsopa. Proc. 22nd Int. Conf. ECTI-CON, IEEE, 2025.
+      <a href="https://doi.org/10.1109/ECTI-CON64996.2025.11101248">doi</a>
     </li>
     <li>
-      <strong>DFX4ML: partial reconfiguration for ML inference on FPGAs.</strong>
-      Tanawin Devaveja, under the supervision of Nicolò Ghielmetti. Technical report v1.0 beta, CERN, 2025.
+      <strong>A Hybrid Hardware Modeling, Simulation, and Generation Framework: A Case Study of RISC-V Out-of-Order
+      Superscalar CPU Design.</strong>
+      Tanawin Devaveja. M.S. thesis, Chulalongkorn University, 2025.
+    </li>
+    <li>
+      <strong>DFX4ML: Partial Reconfiguration for ML Inference on FPGAs.</strong>
+      Tanawin Devaveja, supervised by Nicolò Ghielmetti. Technical report v1.0 beta, CERN, 2026.
       <a href="https://github.com/Tanawin1701d/dfx4ml_infra/blob/master/doc/tech_report_v1.0_beta.pdf">Report (PDF)</a>.
-      Presented as a talk at the CERN Edge SpAIce technical meeting,
+      Presented at the CERN Edge SpAIce technical meeting,
       <a href="https://cds.cern.ch/record/2939815">cds.cern.ch/record/2939815</a>.
     </li>
+  </ul>
+</section>
+
+<section id="awards">
+  <h2>Awards</h2>
+  <ul class="pubs">
     <li>
-      <strong>HoShi: A C++ Framework for High-Performance Hardware Simulation.</strong>
-      Tanawin Devaveja and Krerk Piromsopa. ECTI-CON.
+      <strong>First Place</strong>, FPGA Design Training and Competition, Thailand, Dec 2023.
+      <a href="https://www.facebook.com/DigitalDesignThailand/posts/835186228613251">Announcement</a>.
     </li>
   </ul>
 </section>
@@ -346,24 +453,29 @@
 <section id="skills">
   <h2>Tools</h2>
   <p class="note">
-    <strong>Hardware:</strong> Verilog, VHDL, AXI/AXI-Stream, RISC-V, partial reconfiguration, Vivado, Vitis HLS, PYNQ,
-    PetaLinux. &nbsp;
-    <strong>Software:</strong> C, C++, Python, Rust, Scala, Go, Java. &nbsp;
-    <strong>Architecture:</strong> out-of-order execution, Tomasulo, speculative execution, HW/SW co-design, gem5,
-    Intel Pin, VTune.
+    <strong>Hardware:</strong> Verilog, SystemVerilog, VHDL, Chisel, Kathryn, AXI / AXI-Stream, RISC-V, MIPS, partial
+    reconfiguration.<br>
+    <strong>FPGA and EDA:</strong> Vivado, Vitis HLS, hls4ml, Verilator, Icarus Verilog, PYNQ, PetaLinux, KiCad.<br>
+    <strong>Architecture:</strong> out-of-order execution, Tomasulo, speculation and recovery, gem5, Intel Pin,
+    VTune.<br>
+    <strong>ML and Vision:</strong> Keras, YOLOv8, EasyOCR.<br>
+    <strong>Programming:</strong> C, C++, Python, Rust, Kotlin, Scala, Go, Java.
   </p>
 </section>
 
 </main>
 
 <footer>
-  <p>Last updated August 2026. Source: <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a></p>
+  <p>Last updated November 2026. Source: <a href="https://github.com/Tanawin1701d">github.com/Tanawin1701d</a></p>
 </footer>
+
+</div>
+</div>
 
 <script>
 /* Progressive enhancement only. The projects expand and collapse on their own,
-   with no script. This covers two cases the browser does not: opening a project
-   that an in-page link points at, and expanding every project before printing. */
+   with no script. This covers: opening a project that an in-page link points at,
+   the theme button, and expanding every project before printing. */
 (function () {
   function openTarget() {
     if (!location.hash) return;
@@ -376,6 +488,20 @@
 
   window.addEventListener("hashchange", openTarget);
   openTarget();
+
+  const root  = document.documentElement;
+  const label = document.getElementById("theme-label");
+
+  function showTheme() {
+    label.textContent = root.dataset.theme === "dark" ? "Light mode" : "Dark mode";
+  }
+
+  document.getElementById("theme-btn").addEventListener("click", function () {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    showTheme();
+  });
+  showTheme();
 
   window.addEventListener("beforeprint", function () {
     const all = document.querySelectorAll("details");

@@ -7,9 +7,10 @@ points at it, and expands every project before printing.
 
 ```
 index.html      all content, edit this
-style.css       all styling (always light background, print aware)
+style.css       all styling (pale yellow light theme + dark theme, print aware)
 assets/photo.jpg
-assets/kathryn-tcad.pdf   the TCAD manuscript, linked from the Kathryn project
+assets/cv_tanawin_devaveja.pdf   the CV, linked from the sidebar
+assets/kathryn-tcad.pdf   the TCAD review manuscript, no longer linked (the paper is linked by DOI)
 .nojekyll       tells GitHub Pages to serve the files as-is
 ```
 
@@ -35,11 +36,15 @@ commit a file you would not publish.
 
 ## Updating
 
-- **CV**: no CV is published. To add one, drop a PDF in `assets/` and link it
-  from the contact block in `index.html`. Use a general CV, not one addressed
-  to a single institution.
+- **CV**: `assets/cv_tanawin_devaveja.pdf`, linked first in the sidebar. Build it
+  from `phdApp/cv/cv_tanawin.tex` with the phone number replaced by a
+  black box, `\colorbox{black}{\texttt{\phantom{...}}}` (the box has no digits
+  under it, so the number stays off this public repo), and copy the PDF over this file. Use a
+  general CV, not one addressed to a single institution.
 - **New project**: copy an existing `<details class="project">` block in `index.html`.
   The `<summary>` holds the title and the one-line `.brief` shown while collapsed;
   everything after it (links, status badge, bullets) appears when expanded. Add
   `open` to the `<details>` tag to have a project start expanded.
 - **Date**: the footer line at the bottom of `index.html`.
+- **CSS changes**: bump the `?v=` date on the `style.css` link in `index.html`,
+  or browsers keep showing the cached old stylesheet.
